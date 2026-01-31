@@ -1,0 +1,23 @@
+[project]
+name = "stock-ticker"
+version = "0.1.0"
+description = "This service exposes a single stocks history over a certain number of days"
+authors = [
+    {name = "Rob Morris"}
+]
+requires-python = ">=3.13"
+dependencies = [
+    "alpha-vantage (<3.0.0)",
+    "flask (>=3.1.2,<4.0.0)",
+    "gunicorn (>=24.1.1,<25.0.0)"
+]
+
+
+[build-system]
+requires = ["poetry-core>=2.0.0,<3.0.0"]
+build-backend = "poetry.core.masonry.api"
+
+[dependency-groups]
+dev = [
+    "pytest (>=9.0.2,<10.0.0)"
+]
