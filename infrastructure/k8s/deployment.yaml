@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: stock-ticker
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: stock-ticker
+  template:
+    metadata:
+      labels:
+        app: stock-ticker
+    spec:
+      containers:
+        - name: stock-ticker
+          image: stock-ticker:latest
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 8080
+          envFrom:
+            - configMapRef:
+                name: stock-ticker-config
+            - secretRef:
+                name: stock-ticker-secret
+
